@@ -18,9 +18,16 @@ public class Campo {
     private List<Campo> vizinhos = new ArrayList<>();
 
 
-        //construtor
+    //construtor
     Campo(int linha, int coluna) {
         this.linha = linha;
         this.coluna = coluna;
     }
+
+    //métodos
+    boolean adicionarVizinho(Campo vizinho) {
+        return true;
+    }
+
+
 }
