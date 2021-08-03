@@ -13,7 +13,6 @@ public class Campo {
     private boolean aberto;
     private boolean marcado;
 
-
     //campos vizinhos
     private List<Campo> vizinhos = new ArrayList<>();
 
