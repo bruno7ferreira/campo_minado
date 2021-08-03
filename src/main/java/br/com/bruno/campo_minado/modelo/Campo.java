@@ -27,7 +27,21 @@ public class Campo {
     boolean adicionarVizinho(Campo vizinho) {
         boolean linhaDiferente = this.linha != vizinho.linha;
         boolean colunaDiferente = this.coluna != vizinho.coluna;
-        return true;
+        boolean diagonal = linhaDiferente && colunaDiferente;
+
+        int deltaLinha = Math.abs(this.linha - vizinho.linha); // retorna o número absoluto
+        int deltaColuna = Math.abs(this.coluna - vizinho.coluna); // retorna o número absoluto
+        int deltaGeral = deltaColuna + deltaLinha;
+
+        if (deltaColuna == 1 && !diagonal) {
+            vizinhos.add(vizinho);
+            return true;
+        } else if (deltaGeral == 2 & diagonal) {
+            vizinhos.add(vizinho);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
