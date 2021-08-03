@@ -44,5 +44,11 @@ public class Campo {
         }
     }
 
+    void alterarMarcacao() {
+        if (!aberto) {
+            this.marcado = !marcado;
+        }
+    }
+
 
 }
