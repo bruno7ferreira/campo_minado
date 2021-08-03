@@ -25,6 +25,9 @@ public class Campo {
 
     //métodos
     boolean adicionarVizinho(Campo vizinho) {
+        boolean linhaDiferente = this.linha != vizinho.linha;
+        boolean colunaDiferente = this.coluna != vizinho.coluna;
+        boolean diagonal = linhaDiferente && colunaDiferente;
         return true;
     }
 
