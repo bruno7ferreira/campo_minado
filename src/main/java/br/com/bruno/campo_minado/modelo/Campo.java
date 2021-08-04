@@ -2,6 +2,7 @@ package br.com.bruno.campo_minado.modelo;
 
 import br.com.bruno.campo_minado.excecao.ExplosaoException;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,5 +75,23 @@ public class Campo {
                 .noneMatch(v -> v.minado); // verifica se algum vizinho está minado
     }
 
+    void minar() {
+        if (!minado) {
+            this.minado = true; //deixa o campo minado
+        }
+    }
 
+
+    //get and set
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public boolean isAberto() {
+        return aberto;
+    }
+
+    public boolean isMinado() {
+        return minado;
+    }
 }
