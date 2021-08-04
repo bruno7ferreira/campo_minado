@@ -1,5 +1,7 @@
 package br.com.bruno.campo_minado.modelo;
 
+import br.com.bruno.campo_minado.excecao.ExplosaoException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,28 @@ public class Campo {
         if (!aberto) {
             this.marcado = !marcado;
         }
+    }
+
+    boolean abrir() {
+        if (!aberto && !marcado) { // abrindo um campo do jogo
+            this.aberto = true;
+
+            if (minado) { //abrir um campo minado, fim de jogo
+                throw new ExplosaoException();
+            }
+
+            if (vizinhancaSegura()) {
+                vizinhos.forEach(v -> abrir()); // abre o campo, caso a vizinhaça esteja segura
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    boolean vizinhancaSegura() {
+        return vizinhos.stream()
+                .noneMatch(v -> v.minado); // verifica se algum vizinho está minado
     }
 
 
