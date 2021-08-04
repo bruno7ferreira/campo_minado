@@ -81,6 +81,23 @@ public class Campo {
         }
     }
 
+    boolean objetivoAlcancado() {
+        boolean desvendado = !minado && aberto;
+        boolean protegido = minado && marcado;
+        return desvendado || protegido;
+    }
+
+    long minasNaVizinhanca() {//retorna a quantidade de vizinhos minadas
+        return vizinhos.stream()
+                .filter(v -> v.minado)
+                .count();
+    }
+
+    void reiniciar(){ // Reinicia o jogo
+        aberto=false;
+        minado=false;
+        marcado=false;
+    }
 
     //get and set
     public boolean isMarcado() {
@@ -95,7 +112,15 @@ public class Campo {
         return minado;
     }
 
-    public boolean isFechado() {
-        return !isMinado();
+//    public boolean isFechado() {
+//        return !isMinado();
+//    }
+
+    public int getLinha() {
+        return linha;
+    }
+
+    public int getColuna() {
+        return coluna;
     }
 }
