@@ -93,10 +93,28 @@ public class Campo {
                 .count();
     }
 
-    void reiniciar(){ // Reinicia o jogo
-        aberto=false;
-        minado=false;
-        marcado=false;
+    void reiniciar() { // Reinicia o jogo
+        aberto = false;
+        minado = false;
+        marcado = false;
+    }
+
+    //método toString
+
+
+    @Override
+    public String toString() {
+        if (marcado) {
+            return "x";
+        } else if (aberto && minado) {
+            return "*";
+        } else if (aberto && minasNaVizinhanca() > 0) {
+            return Long.toString(minasNaVizinhanca());
+        } else if (aberto) {
+            return " ";
+        } else {
+            return "?";
+        }
     }
 
     //get and set
