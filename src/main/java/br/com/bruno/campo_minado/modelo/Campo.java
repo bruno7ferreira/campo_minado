@@ -94,4 +94,8 @@ public class Campo {
     public boolean isMinado() {
         return minado;
     }
+
+    public boolean isFechado() {
+        return !isMinado();
+    }
 }
