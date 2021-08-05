@@ -2,7 +2,6 @@ package br.com.bruno.campo_minado.modelo;
 
 import br.com.bruno.campo_minado.excecao.ExplosaoException;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
