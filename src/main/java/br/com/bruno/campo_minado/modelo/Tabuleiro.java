@@ -2,6 +2,7 @@ package br.com.bruno.campo_minado.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Tabuleiro {
 
@@ -43,8 +44,36 @@ public class Tabuleiro {
     }
 
     private void sortearMinas() {
-
+        long minasArmadas = 0;
+        Predicate<Campo> minado = c -> c.isMinado(); //criando a lambda para retornar quais campos estão minados
+        do {
+            minasArmadas = campos.stream()
+                    .filter(minado)//filtrando quantos campos estão minados
+                    .count();
+            int aleatorio = (int) (Math.random() * campos.size()); //criando um número aleatorio
+            campos.get(aleatorio).minar();//retornando a quantidade de campos e minando eles
+        } while (minasArmadas < minas);
     }
 
+    public boolean objetivoAlcancado() {
+        return campos.stream()
+                .allMatch(c -> c.objetivoAlcancado());
+    }
 
+    public void reiniciar() {
+        campos.stream()
+                .forEach(c -> c.reiniciar());
+        sortearMinas();
+    }
+
+    //ToString
+    @Override
+    public String toString() {
+        return "Tabuleiro{" +
+                "linhas=" + linhas +
+                ", colunas=" + colunas +
+                ", minas=" + minas +
+                ", campos=" + campos +
+                '}';
+    }
 }
