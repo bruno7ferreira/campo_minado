@@ -19,7 +19,7 @@ public class Tabuleiro {
         this.minas = minas;
 
         gerarCampo();
-        associarOsVizinhos();
+        associarVizinhos();
         sortearMinas();
 
     }
@@ -27,10 +27,19 @@ public class Tabuleiro {
 
     //métodos
     private void gerarCampo() {
+        for (int contadorLinha = 0; contadorLinha < linhas; contadorLinha++) {
+            for (int contadorColuna = 0; contadorColuna < colunas; contadorColuna++) {
+                campos.add(new Campo(contadorLinha, contadorColuna));
+            }
+        }
     }
 
-    private void associarOsVizinhos() {
-
+    private void associarVizinhos() {
+        for (Campo c1 : campos) {
+            for (Campo c2 : campos) {
+                c1.adicionarVizinho(c2);
+            }
+        }
     }
 
     private void sortearMinas() {
