@@ -17,7 +17,6 @@ public class TabuleiroConsole {
     //construtor
     public TabuleiroConsole(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
-
         executarJogo();
     }
 
@@ -58,11 +57,9 @@ public class TabuleiroConsole {
                 if ("1".equals(digitado)) {
                     tabuleiro.abrir(xy.next(), xy.next());
                 } else if ("2".equals(digitado)) {
-                    tabuleiro.abrir(xy.next(), xy.next());
+                    tabuleiro.alterarMarcacao(xy.next(), xy.next());
                 }
-
             }
-
             System.out.println("Você ganhou!");
         } catch (ExplosaoException e) {
             System.out.println("Você perdeu! ");
