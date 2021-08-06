@@ -4,6 +4,7 @@ import br.com.bruno.campo_minado.excecao.ExplosaoException;
 import br.com.bruno.campo_minado.excecao.SairException;
 import br.com.bruno.campo_minado.modelo.Tabuleiro;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TabuleiroConsole {
@@ -42,11 +43,30 @@ public class TabuleiroConsole {
 
     private void cicloDoJogo() {
         try {
+
+            while (!tabuleiro.objetivoAlcancado()) {
+                System.out.println(tabuleiro.toString());
+
+                String digitado = capturarValorDigitado("Digite (x, y)");
+
+                Arrays.stream(digitado.split(","));
+            }
+
             System.out.println("Você ganhou!");
         } catch (ExplosaoException e) {
             System.out.println("Você perdeu! ");
         }
 
+    }
+
+    private String capturarValorDigitado(String texto) {
+        System.out.print(texto);
+        String digitado = entrada.nextLine();
+
+        if ("sair".equalsIgnoreCase(digitado)) {
+            throw new SairException();
+        }
+        return digitado;
     }
 
 
