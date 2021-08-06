@@ -5,6 +5,7 @@ import br.com.bruno.campo_minado.excecao.SairException;
 import br.com.bruno.campo_minado.modelo.Tabuleiro;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class TabuleiroConsole {
@@ -49,7 +50,10 @@ public class TabuleiroConsole {
 
                 String digitado = capturarValorDigitado("Digite (x, y)");
 
-                Arrays.stream(digitado.split(","));
+                Iterator<Integer> xy = Arrays.stream(digitado.split(","))
+                        .map(e -> Integer.parseInt(e.trim())) // trim = remove os espaços em branco
+                        .iterator();
+                System.out.println(xy.next());
             }
 
             System.out.println("Você ganhou!");
