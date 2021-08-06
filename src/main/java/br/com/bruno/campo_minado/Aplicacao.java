@@ -1,6 +1,7 @@
 package br.com.bruno.campo_minado;
 
 import br.com.bruno.campo_minado.modelo.Tabuleiro;
+import br.com.bruno.campo_minado.visao.TabuleiroConsole;
 
 public class Aplicacao {
 
@@ -8,10 +9,8 @@ public class Aplicacao {
 
         Tabuleiro tabuleiro = new Tabuleiro(6, 6, 6);
 
-        tabuleiro.abrir(3, 3);
-        tabuleiro.alterarMarcacao(4, 5);
+        new TabuleiroConsole(tabuleiro);
 
-        System.out.println(tabuleiro);
 
     }
 
