@@ -27,6 +27,21 @@ public class Tabuleiro {
 
 
     //métodos
+    public void abrir(int linha, int coluna) {
+        campos.parallelStream()
+                .filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
+                .findFirst()
+                .ifPresent(c -> c.abrir());
+    }
+
+    public void alterarMarcacao(int linha, int coluna) {
+        campos.parallelStream()
+                .filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
+                .findFirst()
+                .ifPresent(c -> c.alterarMarcacao());
+    }
+
+
     private void gerarCampo() {
         for (int contadorLinha = 0; contadorLinha < linhas; contadorLinha++) {
             for (int contadorColuna = 0; contadorColuna < colunas; contadorColuna++) {
