@@ -53,7 +53,14 @@ public class TabuleiroConsole {
                 Iterator<Integer> xy = Arrays.stream(digitado.split(","))
                         .map(e -> Integer.parseInt(e.trim())) // trim = remove os espaços em branco
                         .iterator();
-                System.out.println(xy.next());
+                digitado = capturarValorDigitado("1 - para Abrir ou 2-(Des)Marcar: ");
+
+                if ("1".equals(digitado)) {
+                    tabuleiro.abrir(xy.next(), xy.next());
+                } else if ("2".equals(digitado)) {
+                    tabuleiro.abrir(xy.next(), xy.next());
+                }
+
             }
 
             System.out.println("Você ganhou!");
