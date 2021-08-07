@@ -117,6 +117,10 @@ public class Campo {
     }
 
     //get and set
+    void setAberto(boolean aberto) {
+        this.aberto = aberto;
+    }
+
     public boolean isMarcado() {
         return marcado;
     }
@@ -129,9 +133,9 @@ public class Campo {
         return minado;
     }
 
-//    public boolean isFechado() {
-//        return !isMinado();
-//    }
+    public boolean isFechado() {
+        return !isMinado();
+    }
 
     public int getLinha() {
         return linha;

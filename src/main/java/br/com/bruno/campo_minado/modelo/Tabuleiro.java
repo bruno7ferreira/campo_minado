@@ -1,5 +1,7 @@
 package br.com.bruno.campo_minado.modelo;
 
+import br.com.bruno.campo_minado.excecao.ExplosaoException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -28,10 +30,17 @@ public class Tabuleiro {
 
     //métodos
     public void abrir(int linha, int coluna) {
-        campos.parallelStream()
-                .filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
-                .findFirst()
-                .ifPresent(c -> c.abrir());
+        try {
+            campos.parallelStream()
+                    .filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
+                    .findFirst()
+                    .ifPresent(c -> c.abrir());
+        } catch (ExplosaoException e) {
+            campos.forEach(c->c.setAberto(true));
+            throw e;
+
+        }
+
     }
 
     public void alterarMarcacao(int linha, int coluna) {
