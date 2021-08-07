@@ -36,7 +36,7 @@ public class Tabuleiro {
                     .findFirst()
                     .ifPresent(c -> c.abrir());
         } catch (ExplosaoException e) {
-            campos.forEach(c->c.setAberto(true));
+            campos.forEach(c -> c.setAberto(true));
             throw e;
 
         }
@@ -71,11 +71,11 @@ public class Tabuleiro {
         long minasArmadas = 0;
         Predicate<Campo> minado = c -> c.isMinado(); //criando a lambda para retornar quais campos estão minados
         do {
+            int aleatorio = (int) (Math.random() * campos.size()); //criando um número aleatorio
+            campos.get(aleatorio).minar();//retornando a quantidade de campos e minando eles
             minasArmadas = campos.stream()
                     .filter(minado)//filtrando quantos campos estão minados
                     .count();
-            int aleatorio = (int) (Math.random() * campos.size()); //criando um número aleatorio
-            campos.get(aleatorio).minar();//retornando a quantidade de campos e minando eles
         } while (minasArmadas < minas);
     }
 
