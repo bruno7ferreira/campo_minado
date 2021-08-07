@@ -94,9 +94,10 @@ public class Tabuleiro {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
+        sb.append("  ");
         for (int cont = 0; cont < colunas; cont++) {
             sb.append(" ");
+
             sb.append(cont);
             sb.append(" ");
         }
