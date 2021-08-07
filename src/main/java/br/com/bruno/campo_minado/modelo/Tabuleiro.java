@@ -95,6 +95,12 @@ public class Tabuleiro {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
+        for (int cont = 0; cont < colunas; cont++) {
+            sb.append(" ");
+            sb.append(cont);
+            sb.append(" ");
+        }
+
         int i = 0;
         for (int l = 0; l < linhas; l++) {
             for (int c = 0; c < colunas; c++) {
