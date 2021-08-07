@@ -100,6 +100,7 @@ public class Tabuleiro {
             sb.append(cont);
             sb.append(" ");
         }
+        sb.append("\n");
 
         int i = 0;
         for (int l = 0; l < linhas; l++) {
